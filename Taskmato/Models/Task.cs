@@ -30,7 +30,12 @@ namespace Taskmato.Models
 
         public void IncrementPomodoros()
         {
-            // Samantha's code
+            SetPomodoros(GetPomodoros() + 1);
+            @{
+                var db = Database.Open("Pomodoro");
+                var updateQueryString = UPDATE Task SET Pomodoro = GetPromodoros() WHERE Name = GetName();
+                db.Execute(updateQueryString, Pomodoro, Name);
+            }
         }
     }
 }
