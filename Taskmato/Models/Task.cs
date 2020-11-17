@@ -7,7 +7,7 @@ namespace Taskmato.Models
 {
     public class Task
     {
-        public int ID { get; set; }
+        public int TaskID { get; set; }
         public string Name { get; set; }
         public string Details { get; set; }
         public int Pomodoros { get; set; }

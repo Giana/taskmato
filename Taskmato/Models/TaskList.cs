@@ -7,9 +7,10 @@ namespace Taskmato.Models
 {
     public class TaskList
     {
-        public int ID { get; set; }
+        public int TaskListID { get; set; }
         public DateTime Date { get; set; }
-        public List<Task> Tasks { get; set; }
+
+        public virtual ICollection<Task> Tasks { get; set; }
 
         public void AddTask(Task task)
         {
