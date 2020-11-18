@@ -14,7 +14,7 @@ namespace Taskmato.Models
 
         public void AddTask(Task task)
         {
-            // Steven's code
+            Tasks.Add(task);
         }
 
         public void DeleteTask(Task task)
