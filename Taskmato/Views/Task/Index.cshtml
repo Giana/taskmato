@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-md">
                     <div class="container-fluid text-center mb-2">
-                        @Html.ActionLink("Add Task", "Create", "Task", null, new { @class = "btn btn-danger btn-lg pl-4 pr-4" })
+                        @Html.ActionLink("Add Task", "Create", "Task", null, new { @class = "btn btn-dark btn-lg pl-4 pr-4" })
                     </div>
                 </div>
             </div>
@@ -47,8 +47,10 @@
                         <h1 class="display-4 pt-4">0:00</h1>
                         <hr class="my-4">
                         <div class="pb-4">
-                            <a class="btn btn-success btn-lg pl-5 pr-5" id="start-button" href="#" role="button">Start</a>
-                            <a class="btn btn-danger btn-lg pl-5 pr-5" id="end-button" href="#" role="button">End</a>
+                            <a class="btn btn-light btn-lg px-5 my-1 custom-btn" href="#" role="button">Pomodoro</a>
+                            <a class="btn btn-dark btn-lg px-5 my-1 custom-btn" href="#" role="button">Short Break</a>
+                            <a class="btn btn-light btn-lg px-5 my-1 custom-btn" href="#" role="button">Cancel</a>
+                            <a class="btn btn-dark btn-lg px-5 my-1 custom-btn" href="#" role="button">Long Break</a>
                         </div>
                     </div>
                 </div>
