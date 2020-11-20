@@ -35,11 +35,8 @@
             <div class="row">
                 <div class="col-md">
                     <div class="container-fluid text-center mb-2">
-                        <a class="btn btn-danger btn-lg pl-4 pr-4" href="#" role="button">Add Task</a>
+                        @Html.ActionLink("Add Task", "Create", "Task", null, new { @class = "btn btn-danger btn-lg pl-4 pr-4" })
                     </div>
-                    <p>
-                        @Html.ActionLink("Create New", "Create")
-                    </p>
                 </div>
             </div>
         </div>
