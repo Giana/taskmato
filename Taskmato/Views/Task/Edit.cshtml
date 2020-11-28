@@ -22,7 +22,7 @@
                         <div class="col form-group text-center">
                             @Html.HiddenFor(model => model.TaskID)
 
-                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col" })
+                            <strong>@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col" })</strong>
                             @Html.TextBoxFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                             <br>
                             @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
@@ -30,7 +30,7 @@
                     </div>
                     <div class="row">
                         <div class="col form-group text-center">
-                            @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col" })
+                            <strong>@Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col" })</strong>
                             @Html.TextBoxFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
                             <br>
                             @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
@@ -38,7 +38,7 @@
                     </div>
                     <div class="row">
                         <div class="col form-group text-center">
-                            @Html.LabelFor(model => model.Pomodoros, htmlAttributes: new { @class = "control-label col" })
+                            <strong>@Html.LabelFor(model => model.Pomodoros, htmlAttributes: new { @class = "control-label col" })</strong>
                             @Html.TextBoxFor(model => model.Pomodoros, new { htmlAttributes = new { @class = "form-control" } })
                             <br>
                             @Html.ValidationMessageFor(model => model.Pomodoros, "", new { @class = "text-danger" })
@@ -46,7 +46,7 @@
                     </div>
                     <div class="row">
                         <div class="col form-group text-center">
-                            @Html.LabelFor(model => model.Complete, htmlAttributes: new { @class = "control-label col" })
+                            <strong>@Html.LabelFor(model => model.Complete, htmlAttributes: new { @class = "control-label col" })</strong>
                             @Html.EditorFor(model => model.Complete)
                             <br>
                             @Html.ValidationMessageFor(model => model.Complete, "", new { @class = "text-danger" })
