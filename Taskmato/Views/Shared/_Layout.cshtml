@@ -6,6 +6,7 @@
     <title>Taskmato</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/timer.js"></script>
 
     <style>
         .date-box {
@@ -57,7 +58,7 @@
             <p>&copy; @DateTime.Now.Year - Taskmato</p>
         </footer>
     </div>
-
+  
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

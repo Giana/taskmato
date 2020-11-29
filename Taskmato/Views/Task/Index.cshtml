@@ -44,13 +44,13 @@
             <div class="row">
                 <div class="col-md">
                     <div class="container-fluid rounded text-center mb-3 pomodoro-timer-box">
-                        <h1 class="display-4 pt-4">0:00</h1>
+                        <h1 class="display-4 pt-4" id="timer">00:00</h1>
                         <hr class="my-4">
                         <div class="pb-4">
-                            <a class="btn btn-light btn-lg px-5 my-1 custom-btn" href="#" role="button">Pomodoro</a>
-                            <a class="btn btn-dark btn-lg px-5 my-1 custom-btn" href="#" role="button">Short Break</a>
-                            <a class="btn btn-light btn-lg px-5 my-1 custom-btn" href="#" role="button">Cancel</a>
-                            <a class="btn btn-dark btn-lg px-5 my-1 custom-btn" href="#" role="button">Long Break</a>
+                            <a class="btn btn-light btn-lg px-5 my-1 custom-btn" href="#" role="button" onclick="runTimer(60 * 25)">Pomodoro</a>
+                            <a class="btn btn-dark btn-lg px-5 my-1 custom-btn" href="#" role="button" onclick="runTimer(60 * 5)">Short Break</a>
+                            <a class="btn btn-light btn-lg px-5 my-1 custom-btn" href="#" role="button" onclick="resetTimer()">Reset</a>
+                            <a class="btn btn-dark btn-lg px-5 my-1 custom-btn" href="#" role="button" onclick="runTimer(60 * 15)">Long Break</a>
                         </div>
                     </div>
                 </div>
