@@ -28,11 +28,14 @@ namespace Taskmato.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Task task = db.Tasks.Find(id);
+
             if (task == null)
             {
                 return HttpNotFound();
             }
+
             return View(task);
         }
 
@@ -49,12 +52,21 @@ namespace Taskmato.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TaskID,Name,Details,Pomodoros,Complete")] Task task)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Tasks.Add(task);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Tasks.Add(task);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
             }
+            catch(DataException)
+            {
+                ModelState.AddModelError("", "Unable to save changes");
+            }
+            
 
             return View(task);
         }
@@ -62,16 +74,29 @@ namespace Taskmato.Controllers
         // GET: Task/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Task task = db.Tasks.Find(id);
-            if (task == null)
+
+            var taskToUpdate = db.Tasks.Find(id);
+
+            if(TryUpdateModel(taskToUpdate, "",
+               new string[] { "Name", "Details", "Pomodoros", "Complete" }))
             {
-                return HttpNotFound();
+                try
+                {
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                catch(DataException)
+                {
+                    ModelState.AddModelError("", "Unable to save changes");
+                }
             }
-            return View(task);
+
+            return View(taskToUpdate);
         }
 
         // POST: Task/Edit/5
@@ -85,43 +110,61 @@ namespace Taskmato.Controllers
             {
                 db.Entry(task).State = EntityState.Modified;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
+
             return View(task);
         }
 
         // GET: Task/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewBag.ErrorMessage = "Delete failed";
+            }
+
             Task task = db.Tasks.Find(id);
+
             if (task == null)
             {
                 return HttpNotFound();
             }
+
             return View(task);
         }
 
-        // POST: Task/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id)
         {
-            Task task = db.Tasks.Find(id);
-            db.Tasks.Remove(task);
-            db.SaveChanges();
+            try
+            {
+                Task task = db.Tasks.Find(id);
+                db.Tasks.Remove(task);
+                db.SaveChanges();
+            }
+            catch (DataException)
+            {
+                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+            }
+
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if(disposing)
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }

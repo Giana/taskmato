@@ -9,6 +9,7 @@
         <div class="text-center">
             <img class="mb-4 logo-sm" src="~/Images/TaskmatoLogoTransparent.png" alt="Taskmato" />
             <h4>Delete Task</h4>
+            <p class="error">@ViewBag.ErrorMessage</p>
         </div>
         <hr>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
